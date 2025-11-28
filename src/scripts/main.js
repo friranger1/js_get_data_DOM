@@ -8,10 +8,16 @@ let average = 0;
 
 for (const e of elem) {
   const value = e.innerHTML.replaceAll(',', '');
-  total += +value;
+  const number = Number(value); // преобразуем
+
+  if (!Number.isNaN(number)) {
+    total += number;
+  } else {
+    total = NaN;
+  }
 }
 
 average = Math.round(total / elem.length);
 
 totalElem.innerText = total.toLocaleString('en-US');
-averageElem.innerHTML = average.toLocaleString('en-US');
+averageElem.innerText  = average.toLocaleString('en-US');
